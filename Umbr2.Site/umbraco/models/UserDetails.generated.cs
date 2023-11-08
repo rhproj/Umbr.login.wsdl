@@ -18,28 +18,9 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "userDetails"
-	/// <summary>User Details</summary>
-	public partial interface IUserDetails : IPublishedElement
-	{
-		/// <summary>FirstName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string FirstName { get; }
-
-		/// <summary>LastName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string LastName { get; }
-
-		/// <summary>EntityId</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		int UserNameU { get; }
-	}
-
 	/// <summary>User Details</summary>
 	[PublishedModel("userDetails")]
-	public partial class UserDetails : PublishedElementModel, IUserDetails
+	public partial class UserDetails : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -69,17 +50,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// EntityId
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
+		[ImplementPropertyType("entityId")]
+		public virtual int EntityId => this.Value<int>(_publishedValueFallback, "entityId");
+
+		///<summary>
 		/// FirstName
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("firstName")]
-		public virtual string FirstName => GetFirstName(this, _publishedValueFallback);
-
-		/// <summary>Static getter for FirstName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetFirstName(IUserDetails that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "firstName");
+		public virtual string FirstName => this.Value<string>(_publishedValueFallback, "firstName");
 
 		///<summary>
 		/// LastName
@@ -87,22 +70,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("lastName")]
-		public virtual string LastName => GetLastName(this, _publishedValueFallback);
-
-		/// <summary>Static getter for LastName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetLastName(IUserDetails that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "lastName");
-
-		///<summary>
-		/// EntityId
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		[ImplementPropertyType("userNameU")]
-		public virtual int UserNameU => GetUserNameU(this, _publishedValueFallback);
-
-		/// <summary>Static getter for EntityId</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.1+80fac86")]
-		public static int GetUserNameU(IUserDetails that, IPublishedValueFallback publishedValueFallback) => that.Value<int>(publishedValueFallback, "userNameU");
+		public virtual string LastName => this.Value<string>(_publishedValueFallback, "lastName");
 	}
 }

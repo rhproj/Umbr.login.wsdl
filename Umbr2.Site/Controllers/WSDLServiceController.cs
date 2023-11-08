@@ -1,5 +1,8 @@
 ﻿using IICUTechService;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
+using Umbr2.Site.Models;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -7,6 +10,7 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Infrastructure.Persistence;
 using Umbraco.Cms.Web.Common.Models;
+using Umbraco.Cms.Web.Common.PublishedModels;
 using Umbraco.Cms.Web.Website.Controllers;
 
 namespace Umbr2.Site.Controllers
@@ -29,20 +33,24 @@ namespace Umbr2.Site.Controllers
 
                 LoginResponse response = await techClient.LoginAsync(model.Username, model.Password, "192.0.0.1");//Credential.UserName, Credential.Password, Credential.IPs);  //LoginRequest.UserName, LoginRequest.Password, LoginRequest.IPs);    //("admin","password","localhost");      //("meme", "123", "192.0.0.1");
 
-                var s = response.@return;
+                var customerJson = response.@return;
 
-                if (s.Contains("EntityId"))
-                {
-                    await Console.Out.WriteLineAsync("Success!");
-                    return Redirect("/user-page");
-                }
-                else
+                if (!customerJson.Contains("EntityId"))
                 {
                     await Console.Out.WriteLineAsync("TryAgain!");
+                    //TempData["failed"] = "Wrong Credentials";
                     return RedirectToCurrentUmbracoUrl();
                 }
+
+                await Console.Out.WriteLineAsync("Success!");
+
+                var customer = JsonConvert.DeserializeObject<CustomerModel>(customerJson);
+
+                return Redirect("/MyAccount");
+                //return Redirect("/user-page");
+                //return RedirectToPage("/user-page", customer);
             }
-            catch (Exception)
+            catch (Exception) //паснуть ошибку на страницу
             {
                 throw;
             }
