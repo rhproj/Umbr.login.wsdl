@@ -65,5 +65,11 @@ namespace Umbr2.Site.Controllers
                 throw;
             }
         }
+    
+        public IActionResult HandleLogout()
+        {
+            CustomerMemberService.Logout();
+            return Redirect("/");
+        }
     }
 }

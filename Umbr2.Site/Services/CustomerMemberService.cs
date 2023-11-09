@@ -6,7 +6,6 @@ namespace Umbr2.Site.Services
 	public static class CustomerMemberService
 	{
 		public static CustomerModel? Customer { get; private set; }
-		//public static bool IsLoggedIn { get; }
 
         public static void GetMember(string userInfo)
 		{
@@ -16,5 +15,10 @@ namespace Umbr2.Site.Services
 				Customer = JsonConvert.DeserializeObject<CustomerModel>(userInfo);
 			}
 		}
-	}
+
+		public static void Logout()
+		{
+            Customer = null;
+        }
+    }
 }

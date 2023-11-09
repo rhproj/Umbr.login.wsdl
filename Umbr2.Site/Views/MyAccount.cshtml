@@ -13,7 +13,8 @@
 {
 	<div class="text-center mt-5">
 		<h1 class="text-danger">Failed to get login response from the web service</h1>
-		<button class="btn btn-secondary">Try again</button>
+		@* <button class="btn btn-secondary">Try again</button> *@
+		<a class="btn btn-warning mt-5" href="/">Try again</a>
 	</div>
 }
 else if (CustomerMemberService.Customer.EntityId != 0)
@@ -27,7 +28,7 @@ else
 {
 	<div class="text-center mt-5">
 		<h1 class="text-danger">Incorrect username or password!</h1>
-		<button class="btn btn-secondary">Try again</button>
+		<a class="btn btn-warning mt-5" href="/">Try again</a>
 	</div>
 }
 
