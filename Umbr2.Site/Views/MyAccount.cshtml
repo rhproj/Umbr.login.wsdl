@@ -1,8 +1,33 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Newtonsoft.Json;
+@using Umbr2.Site.Models;
+@using Umbr2.Site.Services;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.MyAccount>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "Master.cshtml";
+
+	//var customerJson = TempData["Customer"] as string;
+}
+@if (CustomerMemberService.Customer == null)	//customerJson==null )
+{
+	<div class="text-center mt-5">
+		<h1 class="text-danger">Failed to get login response from the web service</h1>
+		<button class="btn btn-secondary">Try again</button>
+	</div>
+}
+else if (CustomerMemberService.Customer.EntityId != 0)
+{
+	@await Html.PartialAsync("CustomerDetails")
+@* 	<div class="text-center mt-5">
+		<h1 class="text-success">Welcome! @CustomerMemberService.Customer.LastName @CustomerMemberService.Customer.FirstName</h1>
+	</div> *@
+}
+else
+{
+	<div class="text-center mt-5">
+		<h1 class="text-danger">Incorrect username or password!</h1>
+		<button class="btn btn-secondary">Try again</button>
+	</div>
 }
 
-<h1 class="text-success">Welcome!</h1>

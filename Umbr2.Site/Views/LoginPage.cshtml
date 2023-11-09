@@ -5,6 +5,7 @@
     loginModel.RedirectUrl = null; //?
 }
 @using Umbr2.Site.Controllers;
+@using Umbr2.Site.Services;
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.LoginPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
@@ -16,6 +17,8 @@
 @using Umbraco.Extensions
 @inject IMemberExternalLoginProviders memberExternalLoginProviders
 
+@if (CustomerMemberService.Customer == null || CustomerMemberService.Customer.EntityId == 0)
+{
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -43,29 +46,6 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         }
-@* 
-                        <div class="mb-4">
-                            <label>User Name</label>
-                            <input type="text" class="form-control" id="Username" aria-describedby="emailHelp"
-                                  >
-                        </div>
-                        <div class="mb-4">
-                            <label>Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="password">
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div> *@
-                        
-                        @*<div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Login</button></div>
-                        <div id="emailHelp" class="form-text text-center mb-5 text-dark">
-                            Not
-                            Registered? <a href="#" class="text-dark fw-bold">
-                                Create an
-                                Account
-                            </a>
-                        </div> *@
                     </form>
                 </div>
 
@@ -74,4 +54,13 @@
             </div>
         </div>
     </div>
+
+}
+else
+{
+    @await Html.PartialAsync("CustomerDetails")
+@*     <div class="text-center mt-5">
+        <h1 class="text-success">Welcome! @CustomerMemberService.Customer.LastName @CustomerMemberService.Customer.FirstName</h1>
+    </div> *@
+}
 
