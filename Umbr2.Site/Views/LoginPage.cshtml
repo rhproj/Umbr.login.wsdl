@@ -1,8 +1,7 @@
 ﻿@{
 	Layout = "Master.cshtml";
     var loginModel = new LoginModel();
-    // You can modify this to redirect to a different URL instead of the current one
-    loginModel.RedirectUrl = null; //?
+    loginModel.RedirectUrl = null;
 }
 @using Umbr2.Site.Controllers;
 @using Umbr2.Site.Services;
@@ -22,8 +21,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2 class="text-center text-dark mt-5">Login Form</h2>           
-                
+                <h2 class="text-center text-dark mt-5">Sign in</h2>
+
                 <div class="card my-5">
 
                     <form class="card-body cardbody-color p-lg-5">
@@ -57,8 +56,5 @@
 else
 {
     @await Html.PartialAsync("CustomerDetails")
-@*     <div class="text-center mt-5">
-        <h1 class="text-success">Welcome! @CustomerMemberService.Customer.LastName @CustomerMemberService.Customer.FirstName</h1>
-    </div> *@
 }
 

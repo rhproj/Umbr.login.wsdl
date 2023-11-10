@@ -1,20 +1,19 @@
 ﻿using System.Net.NetworkInformation;
 using System.Net;
 
-namespace Umbr2.Site.Services
+namespace Umbr2.Site.Services;
+
+public static class NetworkService
 {
-    public static class NetworkService
+    public static string GetIPAddress()
     {
-        public static string GetIPAddress()
+        if (!NetworkInterface.GetIsNetworkAvailable())
         {
-            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                throw new NetworkInformationException();
-            }
-
-            IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
-
-            return string.Join<IPAddress>(";", host.AddressList);
+            throw new NetworkInformationException();
         }
+
+        IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+        return string.Join<IPAddress>(";", host.AddressList);
     }
 }

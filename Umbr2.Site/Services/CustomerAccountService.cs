@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
-using System.Net.NetworkInformation;
-using System.Net;
 using Umbr2.Site.Models;
 
-namespace Umbr2.Site.Services
-{
-	public static class CustomerAccountService
+namespace Umbr2.Site.Services;
+
+public static class CustomerAccountService
 	{
 		public static CustomerModel? Customer { get; private set; }
 
-        public static void GetMember(string userInfo)
+    public static void GetMember(string userInfo)
 		{
 			Customer = new();
 			if (userInfo.Contains("EntityId"))
@@ -20,8 +18,7 @@ namespace Umbr2.Site.Services
 
 		public static void LogoutMember()
 		{
-            Customer = null;
-        }
-
+        Customer = null;
     }
+
 }

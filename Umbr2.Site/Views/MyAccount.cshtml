@@ -6,29 +6,23 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "Master.cshtml";
-
-	//var customerJson = TempData["Customer"] as string;
 }
-@if (CustomerAccountService.Customer == null)	//customerJson==null )
+@if (CustomerAccountService.Customer == null)
 {
 	<div class="text-center mt-5">
 		<h1 class="text-danger">Failed to get login response from the web service</h1>
-		@* <button class="btn btn-secondary">Try again</button> *@
-		<a class="btn btn-warning mt-5" href="/">Try again</a>
+		<a class="btn btn-warning mt-4" href="/">Try again</a>
 	</div>
 }
 else if (CustomerAccountService.Customer.EntityId != 0)
 {
 	@await Html.PartialAsync("CustomerDetails")
-@* 	<div class="text-center mt-5">
-		<h1 class="text-success">Welcome! @CustomerMemberService.Customer.LastName @CustomerMemberService.Customer.FirstName</h1>
-	</div> *@
 }
 else
 {
 	<div class="text-center mt-5">
 		<h1 class="text-danger">Incorrect username or password!</h1>
-		<a class="btn btn-warning mt-5" href="/">Try again</a>
+		<a class="btn btn-warning mt-4" href="/">Try again</a>
 	</div>
 }
 
