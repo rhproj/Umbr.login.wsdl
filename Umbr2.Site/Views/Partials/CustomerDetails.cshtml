@@ -12,30 +12,65 @@
     <table class="table table-success table-striped">
         <thead class="table-dark">
             <tr>
-                <th scope="col">#</th>
+                <th class="text-center w-10" scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Value</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th scope="row">1</th>
+                <th class="text-center" >1</th>
                 <td>First Name</td>
                 <td>@CustomerMemberService.Customer.FirstName</td>
             </tr>
             <tr>
-                <th scope="row">2</th>
+                <th class="text-center" >2</th>
                 <td>Last Name</td>
                 <td>@CustomerMemberService.Customer.LastName</td>
             </tr>
             <tr>
-                <th scope="row">9</th>
+                <th class="text-center w-auto" >3</th>
+                <td>Company</td>
+                <td>@CustomerMemberService.Customer.Company</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">4</th>
+                <td>Address</td>
+                <td>@CustomerMemberService.Customer.Address</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">5</th>
+                <td>City</td>
+                <td>@CustomerMemberService.Customer.City</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >6</th>
+                <td>Country</td>
+                <td>@CustomerMemberService.Customer.Country</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">7</th>
+                <td>Zip</td>
+                <td>@CustomerMemberService.Customer.Zip</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">8</th>
+                <td>Phone</td>
+                <td>@CustomerMemberService.Customer.Phone</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >9</th>
                 <td>Mobile</td>
                 <td>@CustomerMemberService.Customer.Mobile</td>
             </tr>
             <tr>
-                <th scope="row">9</th>
-                <td>Is Email Confirmed?</td>
+                <th class="text-center w-auto" >10</th>
+                <td>Email</td>
+                <td>@CustomerMemberService.Customer.Email</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >11</th>
+                <td>Email Confirmed?</td>
                 @if (@CustomerMemberService.Customer.EmailConfirm == 0)
                 {
                     <td>No</td>
@@ -44,7 +79,18 @@
                 {
                     <td>Yes</td>
                 }
-
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >12</th>
+                <td>Mobile Confirmed?</td>
+                @if (@CustomerMemberService.Customer.MobileConfirm == 0)
+                {
+                    <td>No</td>
+                }
+                else
+                {
+                    <td>Yes</td>
+                }
             </tr>
         </tbody>
     </table>
