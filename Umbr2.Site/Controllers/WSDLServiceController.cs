@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using StackExchange.Profiling.Internal;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using Umbr2.Site.Models;
 using Umbr2.Site.Services;
 using Umbraco.Cms.Core.Cache;
@@ -33,7 +36,8 @@ namespace Umbr2.Site.Controllers
 
                 //LoginRequest = new LoginRequest();
 
-                LoginResponse response = await techClient.LoginAsync(model.Username, model.Password, "192.0.0.1");//Credential.UserName, Credential.Password, Credential.IPs);  //LoginRequest.UserName, LoginRequest.Password, LoginRequest.IPs);    //("admin","password","localhost");      //("meme", "123", "192.0.0.1");
+                string IPs = NetworkService.GetIPAddress();
+                LoginResponse response = await techClient.LoginAsync(model.Username, model.Password, IPs);//Credential.UserName, Credential.Password, Credential.IPs);  //LoginRequest.UserName, LoginRequest.Password, LoginRequest.IPs);    //("admin","password","localhost");      //("meme", "123", "192.0.0.1");
                  
 				var customerJson = response?.@return;
 
@@ -51,7 +55,7 @@ namespace Umbr2.Site.Controllers
 				//	//return RedirectToCurrentUmbracoUrl();
 				//}
 
-                CustomerMemberService.GetMember(customerJson);
+                CustomerAccountService.GetMember(customerJson);
 				//TempData["message"] = "Welcome";
 				//var customer = JsonConvert.DeserializeObject<CustomerModel>(customerJson);
 
@@ -68,8 +72,28 @@ namespace Umbr2.Site.Controllers
     
         public IActionResult HandleLogout()
         {
-            CustomerMemberService.Logout();
+            CustomerAccountService.LogoutMember();
             return Redirect("/");
         }
+
+
+        //public string GetLocalIPv4(NetworkInterfaceType _type)
+        //{
+        //    string output = "";
+        //    foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
+        //    {
+        //        if (item.NetworkInterfaceType == _type && item.OperationalStatus == OperationalStatus.Up)
+        //        {
+        //            foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+        //            {
+        //                if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+        //                {
+        //                    output = ip.Address.ToString();
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return output;
+        //}
     }
 }

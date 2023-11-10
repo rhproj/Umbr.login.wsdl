@@ -3,7 +3,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 <div class="text-center mt-5">
-    <h1 class="text-success">Welcome! @CustomerMemberService.Customer.LastName @CustomerMemberService.Customer.FirstName</h1>
+    <h1 class="text-success">Welcome! @CustomerAccountService.Customer.LastName @CustomerAccountService.Customer.FirstName</h1>
 </div>
 @* table-responsive *@
 <div class="container d-flex align-items-center justify-content-center">
@@ -21,57 +21,59 @@
             <tr>
                 <th class="text-center" >1</th>
                 <td>First Name</td>
-                <td>@CustomerMemberService.Customer.FirstName</td>
+                <td>@CustomerAccountService.Customer.FirstName</td>
             </tr>
             <tr>
                 <th class="text-center" >2</th>
                 <td>Last Name</td>
-                <td>@CustomerMemberService.Customer.LastName</td>
+                <td>@CustomerAccountService.Customer.LastName</td>
             </tr>
+
             <tr>
                 <th class="text-center w-auto" >3</th>
-                <td>Company</td>
-                <td>@CustomerMemberService.Customer.Company</td>
+                <td>Mobile</td>
+                <td>@CustomerAccountService.Customer.Mobile</td>
             </tr>
             <tr>
                 <th class="text-center w-auto">4</th>
+                <td>Email</td>
+                <td>@CustomerAccountService.Customer.Email</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >5</th>
+                <td>Company</td>
+                <td>@CustomerAccountService.Customer.Company</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">6</th>
                 <td>Address</td>
-                <td>@CustomerMemberService.Customer.Address</td>
-            </tr>
-            <tr>
-                <th class="text-center w-auto">5</th>
-                <td>City</td>
-                <td>@CustomerMemberService.Customer.City</td>
-            </tr>
-            <tr>
-                <th class="text-center w-auto" >6</th>
-                <td>Country</td>
-                <td>@CustomerMemberService.Customer.Country</td>
+                <td>@CustomerAccountService.Customer.Address</td>
             </tr>
             <tr>
                 <th class="text-center w-auto">7</th>
+                <td>City</td>
+                <td>@CustomerAccountService.Customer.City</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto" >8</th>
+                <td>Country</td>
+                <td>@CustomerAccountService.Customer.Country</td>
+            </tr>
+            <tr>
+                <th class="text-center w-auto">9</th>
                 <td>Zip</td>
-                <td>@CustomerMemberService.Customer.Zip</td>
+                <td>@CustomerAccountService.Customer.Zip</td>
             </tr>
             <tr>
-                <th class="text-center w-auto">8</th>
+                <th class="text-center w-auto">10</th>
                 <td>Phone</td>
-                <td>@CustomerMemberService.Customer.Phone</td>
+                <td>@CustomerAccountService.Customer.Phone</td>
             </tr>
-            <tr>
-                <th class="text-center w-auto" >9</th>
-                <td>Mobile</td>
-                <td>@CustomerMemberService.Customer.Mobile</td>
-            </tr>
-            <tr>
-                <th class="text-center w-auto" >10</th>
-                <td>Email</td>
-                <td>@CustomerMemberService.Customer.Email</td>
-            </tr>
+
             <tr>
                 <th class="text-center w-auto" >11</th>
                 <td>Email Confirmed?</td>
-                @if (@CustomerMemberService.Customer.EmailConfirm == 0)
+                @if (CustomerAccountService.Customer.EmailConfirm == 0)
                 {
                     <td>No</td>
                 }
@@ -83,7 +85,7 @@
             <tr>
                 <th class="text-center w-auto" >12</th>
                 <td>Mobile Confirmed?</td>
-                @if (@CustomerMemberService.Customer.MobileConfirm == 0)
+                @if (CustomerAccountService.Customer.MobileConfirm == 0)
                 {
                     <td>No</td>
                 }

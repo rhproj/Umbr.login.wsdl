@@ -17,7 +17,7 @@
 @using Umbraco.Extensions
 @inject IMemberExternalLoginProviders memberExternalLoginProviders
 
-@if (CustomerMemberService.Customer == null || CustomerMemberService.Customer.EntityId == 0)
+@if (CustomerAccountService.Customer == null || CustomerAccountService.Customer.EntityId == 0)
 {
     <div class="container">
         <div class="row">

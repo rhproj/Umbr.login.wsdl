@@ -9,7 +9,7 @@
 
 	//var customerJson = TempData["Customer"] as string;
 }
-@if (CustomerMemberService.Customer == null)	//customerJson==null )
+@if (CustomerAccountService.Customer == null)	//customerJson==null )
 {
 	<div class="text-center mt-5">
 		<h1 class="text-danger">Failed to get login response from the web service</h1>
@@ -17,7 +17,7 @@
 		<a class="btn btn-warning mt-5" href="/">Try again</a>
 	</div>
 }
-else if (CustomerMemberService.Customer.EntityId != 0)
+else if (CustomerAccountService.Customer.EntityId != 0)
 {
 	@await Html.PartialAsync("CustomerDetails")
 @* 	<div class="text-center mt-5">

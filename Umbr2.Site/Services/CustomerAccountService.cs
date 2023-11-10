@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using System.Net.NetworkInformation;
+using System.Net;
 using Umbr2.Site.Models;
 
 namespace Umbr2.Site.Services
 {
-	public static class CustomerMemberService
+	public static class CustomerAccountService
 	{
 		public static CustomerModel? Customer { get; private set; }
 
@@ -16,9 +18,10 @@ namespace Umbr2.Site.Services
 			}
 		}
 
-		public static void Logout()
+		public static void LogoutMember()
 		{
             Customer = null;
         }
+
     }
 }
