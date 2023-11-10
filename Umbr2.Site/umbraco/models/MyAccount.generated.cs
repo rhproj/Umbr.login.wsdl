@@ -8,18 +8,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 using System.Linq.Expressions;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Infrastructure.ModelsBuilder;
-using Umbraco.Cms.Core;
-using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>MyAccount</summary>
-	[PublishedModel("myAccount")]
+    /// <summary>MyAccount</summary>
+    [PublishedModel("myAccount")]
 	public partial class MyAccount : PublishedContentModel
 	{
 		// helpers

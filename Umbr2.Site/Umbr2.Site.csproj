@@ -12,7 +12,6 @@
     <PackageReference Include="System.ServiceModel.NetTcp" Version="4.10.*" />
     <PackageReference Include="System.ServiceModel.Security" Version="4.10.*" />
     <PackageReference Include="Umbraco.Cms" Version="12.3.1" />
-    <PackageReference Include="Umbraco.Community.Templates.UmBootstrap" Version="0.1.9" />
   </ItemGroup>
 
   <ItemGroup>
